@@ -16,7 +16,6 @@ let getUsuarioByID = (id,callback) => {
 }
 
 getUsuarioByID(20, (err,usuario)=>{
-
     if(err){
         console.log(err);
     }
