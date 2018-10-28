@@ -1,0 +1,11 @@
+Tabla de multiplicar del 5:
+5 por 1 es 5 
+5 por 2 es 10 
+5 por 3 es 15 
+5 por 4 es 20 
+5 por 5 es 25 
+5 por 6 es 30 
+5 por 7 es 35 
+5 por 8 es 40 
+5 por 9 es 45 
+5 por 10 es 50 
