@@ -1,8 +1,0 @@
-Tabla de multiplicar del 7:
-7 por 1 es 7 
-7 por 2 es 14 
-7 por 3 es 21 
-7 por 4 es 28 
-7 por 5 es 35 
-7 por 6 es 42 
-7 por 7 es 49 

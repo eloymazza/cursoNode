@@ -1,20 +1,25 @@
-const mult = require('./multiplicar/multiplicar.js');
-const argv = require('yargs')
-            .command('listar', 'Escribe en consola la tabla de multiplicar', {
-                base:{
-                    demand : true,
-                    alias: 'b'
-                },
-                limite : {
-                    alias: 'l',
-                    default: 10
-                }
-            })
-            .argv; 
+const {crearArchivo, listarTabla} = require('./multiplicar/multiplicar.js');
+const argv = require('./config/yargs.js').argv;
+
+let comando = argv._[0];
 
 
-mult.crearArchivo(argv.base, argv.limite)
-.then((archivo) => console.log('Archivo creado:', archivo))
-.catch(err => console.log(err));
+switch ( comando ) {
+    case 'listar':
+        listarTabla(argv.base, argv.limite)
+        .then((lista) => console.log('Lista:', lista))
+        .catch(err => console.log(err));
+    break;
+    case 'crear':
+        crearArchivo(argv.base, argv.limite)
+        .then((archivo) => console.log('Archivo creado:', archivo))
+        .catch(err => console.log(err));
+    break;
+    default:
+        console.log('Comando no reconocido');
+    break;
+}
+
+
 
 
