@@ -1,15 +1,28 @@
 const {argv} = require('./config/yargs');
-console.log(argv);
+const tasksManager = require('./to-do/to-do');
 
 let comando = argv._[0];
 
 switch ( comando ) {
-
     case 'create':
-    console.log("crear Tarea");
+        let task = tasksManager.createTask(argv.description);
+        console.log(task);
     break;
     case 'list':
-    console.log("listar Tarea");
+        let taskList = tasksManager.list();
+        console.log(taskList);
+        console.log('=========Task List==========');
+        if(taskList.length != 0){
+            for (let task of taskList){
+                console.log(task.description);
+                console.log (`Completada: ${task.completed}`);
+            }
+            console.log('============================');
+        }
+        else{
+            console.log('Task List is Empty');
+            console.log('============================');    
+        }
     break;
     case 'update':
     console.log("crear Tarea");

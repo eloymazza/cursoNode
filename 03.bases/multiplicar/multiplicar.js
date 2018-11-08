@@ -20,7 +20,7 @@ let listarTabla = (base, limite = 10) => {
             resultString += `\n${base} por ${i} es ${base*i} `;
         }
 
-        resolve(resultString)
+        resolve(resultString);
 
     });
 
