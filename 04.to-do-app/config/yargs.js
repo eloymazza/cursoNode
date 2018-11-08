@@ -16,15 +16,18 @@ const argv = require('yargs')
                     },
                     completed: {
                         alias: 'c',
+                        default: true
                     }
                 })
                 .command('list', 'List the tasks', {
-                    completed: {
-                        alias: 'c',
-                        default: false
-                    },
-                    all: {
-                        alias: 'a'
+                    filter : {
+                        alias : 'f',
+                        default : 'all'
+                    }
+                })
+                .command('delete', 'Delete the task', {
+                    description: {
+                        alias: 'd'
                     }
                 })
                 .help()
