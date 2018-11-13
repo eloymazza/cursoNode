@@ -1,4 +1,4 @@
-const axios = require('axios');
+const place = require('./place/place');
 const argv = require('yargs').options({
     direction: {
         alias: 'd',
@@ -7,19 +7,10 @@ const argv = require('yargs').options({
     }
 }).argv;
 
+const APIKEY = '22c74b2b7c64c68278fb6f41b9204866';
 
-let encodedURL = encodeURI(argv.direction); 
-
-axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedURL}&key=AIzaSyAb6Ed05c5cJo3mI9W8X4kBLiOE908JoZ4`)
-    .then( resp => {
-        let formattedAddress =  resp.data.results[0].formatted_address;
-        let location = resp.data.results[0].geometry.location;
-        let lat = location.lat;
-        let long = location.lng;
-        console.log(`
-        Ciudad:  ${formattedAddress}
-        Latitud: ${lat}
-        Longitud ${long}`);
-        
-    })
-    .catch( e => console.log('Error!!', e));
+let placeData = place.getPlaceLatLong(argv.direction)
+    .then( resp => console.log(resp))
+    .catch( e => console.log("Error found:",e));
+    
+place.getwheaterByPlace(placeData)
