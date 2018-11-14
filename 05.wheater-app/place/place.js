@@ -1,10 +1,9 @@
 const axios = require('axios');
 
-
 const getPlaceLatLong = async (direction) => {
     
     let encodedURL = encodeURI(direction); 
-    
+  
     let resp = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedURL}&key=AIzaSyAb6Ed05c5cJo3mI9W8X4kBLiOE908JoZ4`)
     
     if( resp.data.status === 'ZERO_RESULTS' ) {
@@ -20,9 +19,9 @@ const getPlaceLatLong = async (direction) => {
     }
 }
 
-const getWheaterByPlace = (placeData) => {}
+
 
 module.exports = {
-    getPlaceLatLong
+    getPlaceLatLong,
 }
 
