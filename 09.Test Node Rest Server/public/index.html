@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-client_id" content="283294739320-jq6686liu0rif8dg1c310ktvpra8i23u.apps.googleusercontent.com">
+    <title>Google Sign in Demo</title>
+</head>
+<body>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
+    <h1>User:</h1>
+    <!--<img src="http://localhost:3000/image/user/5bf77480e1cfd120f088903a-229.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InJvbGUiOiJBRE1JTl9ST0xFIiwic3RhdGUiOnRydWUsImdvb2dsZSI6ZmFsc2UsIl9pZCI6IjViZjc3NDgwZTFjZmQxMjBmMDg4OTAzYSIsIm5hbWUiOiJ0ZXN0Um9sZUFkbWluIiwiZW1haWwiOiJ0ZXN0Um9sZUFkbWluQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJHB5MTlNeXJ5RVd1U1VQdVNaZXdqLy56djNFb2pYaUJpbkJleVFJMExZR09LZHJuVldRY2ZLIiwiaW1nIjoiNWJmNzc0ODBlMWNmZDEyMGYwODg5MDNhLTIyOS5wbmciLCJfX3YiOjB9LCJpYXQiOjE1NDQ0OTMwNDQsImV4cCI6MTU0NDQ5NTYzNn0.igVKUeGJld1GXGa95ZixG8x7hKykpwebbLu-6_RVljk" alt="">-->
+</body>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+    
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    
+    var token = googleUser.getAuthResponse().id_token;
+    console.log(token);
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/google-login');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        console.log('Signed in as: ' + xhr.responseText);
+    };
+    xhr.send('token=' + token);
+
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+    console.log('User signed out.');
+    });
+}
+
+
+ 
+</script>
+
+</html>
