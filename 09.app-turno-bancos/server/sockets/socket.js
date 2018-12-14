@@ -1,5 +1,7 @@
 const { io } = require('../server');
+const { TicketControl } = require('../classes/ticket-control');
 
+const ticketControl = new TicketControl();
 
 io.on('connection', (client) => {
 
@@ -10,7 +12,7 @@ io.on('connection', (client) => {
         mensaje: 'Bienvenido a esta aplicación'
     });
 
-
+    
 
     client.on('disconnect', () => {
         console.log('Usuario desconectado');
@@ -34,8 +36,6 @@ io.on('connection', (client) => {
         //         resp: 'TODO SALIO MAL!!!!!!!!'
         //     });
         // }
-
-
 
     });
 
